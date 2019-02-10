@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS members_diary(
+  id INTEGER PRIMARY KEY,
+  name VARCHAR(32) NOT NULL,
+  birthday DATE NOT NULL ,
+  blood_type VARCHAR(8) NOT NULL,
+  address VARCHAR(32) NOT NULL
+);
