@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="MemberDiary" />
+        <module name="MembersDiary" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="MembersDiary" target="1.5" />
-    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-parameters" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MembersDiary" options="" />
+    </option>
   </component>
 </project>

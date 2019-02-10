@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Bean;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 class JdbcConfigTest {
   
@@ -21,7 +21,7 @@ class JdbcConfigTest {
     Bean bean = jdbcTemplateMethod.getAnnotation(Bean.class);
     assertThat(bean).as("@Beanアノテーションが付与されている").isNotNull();
     
-    JdbcTemplate jdbcTemplate = jdbcConfig.jdbcTemplate(dataSource);
+    NamedParameterJdbcTemplate jdbcTemplate = jdbcConfig.jdbcTemplate(dataSource);
     assertThat(jdbcTemplate).as("JDBCTemplateが得られること").isNotNull();
   }
   
