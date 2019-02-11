@@ -2,25 +2,80 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous">
     <title>Members Diary</title>
 </head>
-<body>
-    <h1>Members Diary</h1>
-
-    <p>メンバーのプロフィール</p>
-    <table>
-        <tr>
-            <th>名前</th>
-            <th>誕生日</th>
-            <th>血液型</th>
-            <th>出身地</th>
-        </tr>
-        <tr th:each="profile : ${membersDiary}" th:object="${profile}">
-            <td th:text="*{name}">名前</td>
-            <td th:text="*{birthday}">1980-01-01</td>
-            <td th:text="*{bloodType}">A</td>
-            <td th:text="*{address}">東京都</td>
-        </tr>
-    </table>
+<body data-gr-c-s-loaded="true">
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Members Diary</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search"
+                       aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search
+                </button>
+            </form>
+        </div>
+    </nav>
+</header>
+<main role="main" class="p-5">
+    <section class="jumbotron">
+        <div class="container">
+            <h1 class="jumbotron-heading">Members Profile</h1>
+        </div>
+    </section>
+    <div>
+        <div class="container">
+            <table class="table table-striped">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">名前</th>
+                    <th scope="col">誕生日</th>
+                    <th scope="col">血液型</th>
+                    <th scope="col">出身地</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr scope="row" th:each="profile : ${membersDiary}" th:object="${profile}">
+                    <td th:text="*{name}">名前</td>
+                    <td th:text="*{birthday}">1980-01-01</td>
+                    <td th:text="*{bloodType}">A</td>
+                    <td th:text="*{address}">東京都</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
 </body>
 </html>
