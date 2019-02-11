@@ -9,7 +9,7 @@ import org.springframework.data.jdbc.repository.config.JdbcConfiguration;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 @Configuration
-@EnableJdbcRepositories(basePackages = "com.demo.domain.repository.membersdiary")
+@EnableJdbcRepositories(basePackages = "com.demo.domain.repository")
 @Import(JdbcConfiguration.class)
 public class JdbcConfig {
   

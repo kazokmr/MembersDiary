@@ -10,13 +10,20 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import javax.sql.DataSource;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
-@SpringJUnitConfig(classes = {DatasourceEmbeddedConfig.class, JdbcConfig.class, MembersDiaryRepository.class})
+@SpringJUnitConfig(classes = {DatasourceEmbeddedConfig.class, JdbcConfig.class,MembersDiaryRepositoryTest.TestTransactionConfig.class})
 class MembersDiaryRepositoryTest {
   
   @Autowired
@@ -41,6 +48,7 @@ class MembersDiaryRepositoryTest {
   
   @Test
   @DisplayName("データの登録テスト")
+  @Transactional
   void createMembersDiaryTest() {
     
     MembersDiary createData = new MembersDiary(
@@ -63,5 +71,14 @@ class MembersDiaryRepositoryTest {
     soft.assertThat(memberDiary.getBloodType()).as("BloodType").isEqualTo("A");
     soft.assertThat(memberDiary.getAddress()).as("Address").isEqualTo("大阪府");
     soft.assertAll();
+  }
+  
+  @Configuration
+  @EnableTransactionManagement
+  public static class TestTransactionConfig {
+    @Bean
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
+      return new DataSourceTransactionManager(dataSource);
+    }
   }
 }
