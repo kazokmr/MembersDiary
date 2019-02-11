@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Members Diary</title>
+</head>
+<body>
+    <h1>Members Diary</h1>
+
+    <p>メンバーのプロフィール</p>
+    <table>
+        <tr>
+            <th>名前</th>
+            <th>誕生日</th>
+            <th>血液型</th>
+            <th>出身地</th>
+        </tr>
+        <tr th:each="profile : ${membersDiary}" th:object="${profile}">
+            <td th:text="*{name}">名前</td>
+            <td th:text="*{birthday}">1980-01-01</td>
+            <td th:text="*{bloodType}">A</td>
+            <td th:text="*{address}">東京都</td>
+        </tr>
+    </table>
+</body>
+</html>

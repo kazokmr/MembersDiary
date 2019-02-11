@@ -8,6 +8,7 @@
     <artifactId>demo.webinar</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
+    <name>Members Diary</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -107,6 +108,7 @@
     </dependencies>
 
     <build>
+        <finalName>members-diary</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

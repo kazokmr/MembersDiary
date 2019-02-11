@@ -6,6 +6,7 @@ import com.demo.config.transaction.TransactionManagerConfig;
 import com.demo.domain.entity.membersdiary.MembersDiary;
 import java.util.stream.StreamSupport;
 import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
