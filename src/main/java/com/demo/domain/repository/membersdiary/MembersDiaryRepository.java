@@ -1,6 +1,6 @@
-package com.demo.data.repository;
+package com.demo.domain.repository.membersdiary;
 
-import com.demo.data.domain.MembersDiary;
+import com.demo.domain.entity.membersdiary.MembersDiary;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

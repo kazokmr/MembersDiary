@@ -1,4 +1,4 @@
-package com.demo.data.config;
+package com.demo.config.jdbc;
 
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;

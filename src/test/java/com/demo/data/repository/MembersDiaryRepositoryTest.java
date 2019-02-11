@@ -2,9 +2,10 @@ package com.demo.data.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.demo.data.config.DatasourceEmbeddedConfig;
-import com.demo.data.config.JdbcConfig;
-import com.demo.data.domain.MembersDiary;
+import com.demo.config.jdbc.DatasourceEmbeddedConfig;
+import com.demo.config.jdbc.JdbcConfig;
+import com.demo.domain.entity.membersdiary.MembersDiary;
+import com.demo.domain.repository.membersdiary.MembersDiaryRepository;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;

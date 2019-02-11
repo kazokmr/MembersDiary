@@ -1,4 +1,4 @@
-package com.demo.data.domain;
+package com.demo.domain.entity.membersdiary;
 
 import java.time.LocalDate;
 import java.util.Objects;
