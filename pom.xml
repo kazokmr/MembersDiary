@@ -110,6 +110,7 @@
     <build>
         <finalName>members-diary</finalName>
         <plugins>
+            <!-- Maven Core plugins -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
@@ -143,15 +144,16 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.1</version>
-                <configuration>
-                    <argLine>-Xmx256m ${jacocoArgs}</argLine>
-                </configuration>
+                <!--<configuration>-->
+                <!--<argLine>-Xmx256m ${jacocoArgs}</argLine>-->
+                <!--</configuration>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-verifier-plugin</artifactId>
                 <version>1.1</version>
             </plugin>
+            <!-- Packaging -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -162,6 +164,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.2.2</version>
             </plugin>
+            <!-- Static code analysis -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -173,19 +176,21 @@
                         <version>8.16</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <includes>src/**\/*.java</includes>
+                    <configLocation>google_checks.xml</configLocation>
+                    <failsOnError>true</failsOnError>
+                    <failOnViolation>true</failOnViolation>
+                    <violationSeverity>error</violationSeverity>
+                    <consoleOutput>true</consoleOutput>
+                </configuration>
                 <executions>
                     <execution>
-                        <phase>validate</phase>
+                        <id>checkstyle</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
-                        <configuration>
-                            <configLocation>google_checks.xml</configLocation>
-                            <encoding>${project.build.sourceEncoding}</encoding>
-                            <violationSeverity>error</violationSeverity>
-                            <consoleOutput>true</consoleOutput>
-                            <failsOnError>true</failsOnError>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -200,67 +205,115 @@
                         <version>3.1.10</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <effort>Default</effort>
+                    <threshold>Default</threshold>
+                    <failOnError>true</failOnError>
+                    <trace>true</trace>
+                    <xmlOutput>true</xmlOutput>
+                </configuration>
                 <executions>
                     <execution>
-                        <phase>validate</phase>
+                        <id>spotbugs</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
-                        <configuration>
-                            <effort>Default</effort>
-                            <threshold>Default</threshold>
-                            <failOnError>true</failOnError>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <printFailingErrors>true</printFailingErrors>
+                    <analysisCache>true</analysisCache>
+                    <targetJdk>${java.version}</targetJdk>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>prepare-agent</id>
-                        <phase>test-compile</phase>
+                        <id>PMD</id>
+                        <phase>test</phase>
                         <goals>
-                            <goal>prepare-agent</goal>
+                            <goal>check</goal>
                         </goals>
-                        <configuration>
-                            <propertyName>jacocoArgs</propertyName>
-                            <includes>
-                                <include>*</include>
-                            </includes>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.openclover</groupId>-->
+                <!--<artifactId>clover-maven-plugin</artifactId>-->
+                <!--<version>4.3.1</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>openclover-instrument</id>-->
+                        <!--<phase>generate-sources</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>instrument-test</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                    <!--<execution>-->
+                    <!--<id>openclover-check</id>-->
+                    <!--<phase>test</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>clover</goal>-->
+                    <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+            <!--<groupId>org.jacoco</groupId>-->
+            <!--<artifactId>jacoco-maven-plugin</artifactId>-->
+            <!--<version>0.8.2</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>prepare-agent</id>-->
+            <!--<phase>test-compile</phase>-->
+            <!--<goals>-->
+            <!--<goal>prepare-agent</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<propertyName>jacocoArgs</propertyName>-->
+            <!--<includes>-->
+            <!--<include>*</include>-->
+            <!--</includes>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
+    <!-- Because of the static analysis reports are outed on the build phase, if you only want to view on the CI tool, the 'mvn site' may not be necessary. -->
     <reporting>
         <plugins>
+            <!-- Reporting plugins -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
                 <version>3.0.0</version>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>index</report>
-                            <report>licenses</report>
-                            <report>summary</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>3.0.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
+                    <includes>src/**\/*.java</includes>
                     <configLocation>google_checks.xml</configLocation>
-                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>checkstyle</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
             </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
@@ -268,17 +321,42 @@
                 <version>3.1.10</version>
                 <configuration>
                     <xmlOutput>true</xmlOutput>
-                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.2</version>
                 <reportSets>
                     <reportSet>
                         <reports>
-                            <report>report</report>
+                            <report>spotbugs</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <skipEmptyReport>false</skipEmptyReport>
+                    <printFailingErrors>true</printFailingErrors>
+                    <!-- Dont use cache here, the lifesycle for `site` goal wont support it-->
+                    <analysisCache>false</analysisCache>
+                    <targetJdk>${java.version}</targetJdk>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>pmd</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.openclover</groupId>
+                <artifactId>clover-maven-plugin</artifactId>
+                <version>4.3.1</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>clover</report>
                         </reports>
                     </reportSet>
                 </reportSets>
