@@ -264,25 +264,25 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.openclover</groupId>
-                <artifactId>clover-maven-plugin</artifactId>
-                <version>4.3.1</version>
-                 <configuration>
-                    <targetPercentage>1%</targetPercentage>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>check</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>instrument-test</goal>
-                            <goal>check</goal>
-                            <goal>clover</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.openclover</groupId>-->
+                <!--<artifactId>clover-maven-plugin</artifactId>-->
+                <!--<version>4.3.1</version>-->
+                 <!--<configuration>-->
+                    <!--<targetPercentage>1%</targetPercentage>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>check</id>-->
+                        <!--<phase>verify</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>instrument-test</goal>-->
+                            <!--<goal>check</goal>-->
+                            <!--<goal>clover</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -377,21 +377,21 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-            <plugin>
-                <groupId>org.openclover</groupId>
-                <artifactId>clover-maven-plugin</artifactId>
-                <version>4.3.1</version>
-                 <configuration>
-                    <targetPercentage>1%</targetPercentage>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>clover</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.openclover</groupId>-->
+                <!--<artifactId>clover-maven-plugin</artifactId>-->
+                <!--<version>4.3.1</version>-->
+                 <!--<configuration>-->
+                    <!--<targetPercentage>1%</targetPercentage>-->
+                <!--</configuration>-->
+                <!--<reportSets>-->
+                    <!--<reportSet>-->
+                        <!--<reports>-->
+                            <!--<report>clover</report>-->
+                        <!--</reports>-->
+                    <!--</reportSet>-->
+                <!--</reportSets>-->
+            <!--</plugin>-->
         </plugins>
     </reporting>
 </project>
