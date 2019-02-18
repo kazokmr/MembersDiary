@@ -186,7 +186,7 @@
                 <executions>
                     <execution>
                         <id>checkstyle</id>
-                        <phase>validate</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -270,16 +270,11 @@
                 <version>4.3.1</version>
                 <executions>
                     <execution>
-                        <id>openclover-instrument</id>
-                        <phase>generate-sources</phase>
+                        <id>check</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>instrument-test</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>openclover-check</id>
-                        <phase>test</phase>
-                        <goals>
+                            <goal>check</goal>
                             <goal>clover</goal>
                         </goals>
                     </execution>
