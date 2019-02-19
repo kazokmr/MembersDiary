@@ -242,10 +242,15 @@
                         <ruleset>/category/java/bestpractices.xml</ruleset>
                         <ruleset>/category/java/codestyle.xml</ruleset>
                         <ruleset>/category/java/design.xml</ruleset>
+                        <ruleset>/category/java/documentation.xml</ruleset>
                         <ruleset>/category/java/errorprone.xml</ruleset>
                         <ruleset>/category/java/multithreading.xml</ruleset>
                         <ruleset>/category/java/performance.xml</ruleset>
+                        <ruleset>/category/java/security.xml</ruleset>
                     </rulesets>
+                    <excludes>
+                        <exclude>**/test/*Test*.java</exclude>
+                    </excludes>
                     <targetJdk>${java.version}</targetJdk>
                     <failOnViolation>true</failOnViolation>
                     <failurePriority>0</failurePriority>
@@ -269,7 +274,10 @@
                 <artifactId>clover-maven-plugin</artifactId>
                 <version>4.3.1</version>
                 <configuration>
-                    <targetPercentage>1%</targetPercentage>
+                    <targetPercentage>50%</targetPercentage>
+                    <failOnViolation>true</failOnViolation>
+                    <generateHtml>true</generateHtml>
+                    <generateXml>true</generateXml>
                 </configuration>
                 <executions>
                     <execution>
@@ -359,9 +367,11 @@
                         <ruleset>/category/java/bestpractices.xml</ruleset>
                         <ruleset>/category/java/codestyle.xml</ruleset>
                         <ruleset>/category/java/design.xml</ruleset>
+                        <ruleset>/category/java/documentation.xml</ruleset>
                         <ruleset>/category/java/errorprone.xml</ruleset>
                         <ruleset>/category/java/multithreading.xml</ruleset>
                         <ruleset>/category/java/performance.xml</ruleset>
+                        <ruleset>/category/java/security.xml</ruleset>
                     </rulesets>
                     <targetJdk>${java.version}</targetJdk>
                     <skipEmptyReport>false</skipEmptyReport>
@@ -382,7 +392,9 @@
                 <artifactId>clover-maven-plugin</artifactId>
                 <version>4.3.1</version>
                 <configuration>
-                    <targetPercentage>1%</targetPercentage>
+                    <targetPercentage>50%</targetPercentage>
+                    <generateHtml>true</generateHtml>
+                    <generateXml>true</generateXml>
                 </configuration>
                 <reportSets>
                     <reportSet>
