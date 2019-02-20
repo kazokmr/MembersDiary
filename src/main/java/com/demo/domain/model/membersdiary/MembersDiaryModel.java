@@ -1,8 +1,6 @@
 package com.demo.domain.model.membersdiary;
 
 import com.demo.domain.entity.membersdiary.MembersDiary;
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class MembersDiaryModel {

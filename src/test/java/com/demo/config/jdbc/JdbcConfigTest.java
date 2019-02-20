@@ -2,8 +2,6 @@ package com.demo.config.jdbc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.demo.config.jdbc.DatasourceEmbeddedConfig;
-import com.demo.config.jdbc.JdbcConfig;
 import java.lang.reflect.Method;
 import javax.sql.DataSource;
 import org.junit.jupiter.api.DisplayName;
