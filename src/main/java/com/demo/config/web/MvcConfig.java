@@ -1,6 +1,7 @@
 package com.demo.config.web;
 
-import java.nio.charset.StandardCharsets;
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +23,7 @@ public class MvcConfig implements WebMvcConfigurer {
     templateResolver.setPrefix("classpath:/templates/");
     templateResolver.setSuffix(".html");
     templateResolver.setTemplateMode(TemplateMode.HTML);
-    templateResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
+    templateResolver.setCharacterEncoding(UTF_8.name());
     templateResolver.setCacheable(false);
     return templateResolver;
   }
@@ -39,7 +40,7 @@ public class MvcConfig implements WebMvcConfigurer {
   public ThymeleafViewResolver viewResolver(SpringTemplateEngine templateEngine) {
     ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
     viewResolver.setTemplateEngine(templateEngine);
-    viewResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
+    viewResolver.setCharacterEncoding(UTF_8.name());
     return viewResolver;
   }
 }

@@ -1,9 +1,13 @@
 package com.demo.domain.model.membersdiary;
 
-import com.demo.domain.entity.membersdiary.MembersDiary;
-import java.time.format.DateTimeFormatter;
+import static java.time.format.DateTimeFormatter.ofPattern;
 
-public class MembersDiaryModel {
+import com.demo.domain.entity.membersdiary.MembersDiary;
+import java.io.Serializable;
+
+public class MembersDiaryModel implements Serializable {
+  
+  private static final long serialVersionUID = -6810611005782289073L;
   
   private final MembersDiary membersDiary;
   
@@ -16,7 +20,7 @@ public class MembersDiaryModel {
   }
   
   public String getBirthday() {
-    return DateTimeFormatter.ofPattern("uuuu/MM/dd").format(membersDiary.getBirthday());
+    return ofPattern("uuuu/MM/dd").format(membersDiary.getBirthday());
   }
   
   public String getBloodType() {

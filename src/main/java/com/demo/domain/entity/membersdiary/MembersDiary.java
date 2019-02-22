@@ -1,10 +1,13 @@
 package com.demo.domain.entity.membersdiary;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import org.springframework.data.annotation.Id;
 
-public class MembersDiary {
+public class MembersDiary implements Serializable {
+  
+  private static final long serialVersionUID = 1383358138317574766L;
   
   @Id
   private Integer id;

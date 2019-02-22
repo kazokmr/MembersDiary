@@ -26,6 +26,14 @@
       </set>
     </option>
   </component>
+  <component name="PDMPlugin">
+    <option name="options">
+      <map>
+        <entry key="Encoding" value="UTF-8" />
+        <entry key="Target JDK" value="11" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="OpenJDK 11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
