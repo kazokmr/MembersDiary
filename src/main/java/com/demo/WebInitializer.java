@@ -14,7 +14,12 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
   
   @Override
   protected Class<?>[] getServletConfigClasses() {
-    return new Class[]{DatasourceEmbeddedConfig.class, JdbcConfig.class, TransactionManagerConfig.class, MvcConfig.class};
+    return new Class[]{
+        DatasourceEmbeddedConfig.class,
+        JdbcConfig.class,
+        TransactionManagerConfig.class,
+        MvcConfig.class
+    };
   }
   
   @Override

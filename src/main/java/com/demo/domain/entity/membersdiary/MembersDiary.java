@@ -62,19 +62,23 @@ public class MembersDiary {
   
   @Override
   public String toString() {
-    return "MembersDiary{" +
-        "id=" + id +
-        ", name='" + name + '\'' +
-        ", birthday=" + birthday +
-        ", bloodType='" + bloodType + '\'' +
-        ", address='" + address + '\'' +
-        '}';
+    return "MembersDiary{"
+        + "id=" + id
+        + ", name='" + name + '\''
+        + ", birthday=" + birthday
+        + ", bloodType='" + bloodType + '\''
+        + ", address='" + address + '\''
+        + '}';
   }
   
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     MembersDiary that = (MembersDiary) o;
     return id.equals(that.id);
   }
