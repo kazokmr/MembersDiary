@@ -47,3 +47,8 @@ jobs:
 
       - store_artifacts:
           path: target/members-diary.war
+
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$MembersDiary.git master
