@@ -12,9 +12,12 @@ public class DatasourceEmbeddedConfig {
   @Bean
   public DataSource dataSource() {
     return new EmbeddedDatabaseBuilder()
+        .generateUniqueName(true)
         .setType(EmbeddedDatabaseType.H2)
         .setScriptEncoding("UTF-8")
-        .addScripts("classpath:/sql/schema.sql", "classpath:/sql/data.sql")
+        .ignoreFailedDrops(true)
+        .addScript("classpath:/sql/schema.sql")
+        .addScripts("classpath:/sql/data.sql")
         .build();
   }
 }

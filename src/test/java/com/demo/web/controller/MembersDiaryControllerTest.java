@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.ui.ExtendedModelMap;
 
-@SpringJUnitWebConfig(classes = {DatasourceEmbeddedConfig.class, JdbcConfig.class, TransactionManagerConfig.class, MvcConfig.class})
+@SpringJUnitWebConfig({DatasourceEmbeddedConfig.class, JdbcConfig.class, TransactionManagerConfig.class, MvcConfig.class})
 class MembersDiaryControllerTest {
   
   @Autowired
@@ -31,8 +31,9 @@ class MembersDiaryControllerTest {
     // モデルオブジェクトの確認
     assertThat(membersDiaryModel).as("ModelがNULLでは無い").isNotNull();
     assertThat(membersDiaryModel).isInstanceOf(List.class);
+    assertThat(viewName).as("出力するViewの名称がlist").isEqualTo("list");
     
-    List<MembersDiaryModel> modelList = (List<MembersDiaryModel>) membersDiaryModel;
+    @SuppressWarnings("unchecked") List<MembersDiaryModel> modelList = (List<MembersDiaryModel>) membersDiaryModel;
     assertThat(modelList.size()).as("リストのサイズは20").isEqualTo(20);
     
     SoftAssertions soft = new SoftAssertions();

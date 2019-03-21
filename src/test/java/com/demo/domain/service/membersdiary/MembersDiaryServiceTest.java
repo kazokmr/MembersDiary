@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-@SpringJUnitConfig(classes = {DatasourceEmbeddedConfig.class, JdbcConfig.class, TransactionManagerConfig.class})
+@SpringJUnitConfig({DatasourceEmbeddedConfig.class, JdbcConfig.class, TransactionManagerConfig.class})
 class MembersDiaryServiceTest {
   
   @Autowired

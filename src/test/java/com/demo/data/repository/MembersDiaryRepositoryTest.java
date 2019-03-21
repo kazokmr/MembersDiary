@@ -23,7 +23,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringJUnitConfig(classes = {DatasourceEmbeddedConfig.class, JdbcConfig.class,MembersDiaryRepositoryTest.TestTransactionConfig.class})
+@SpringJUnitConfig({DatasourceEmbeddedConfig.class, JdbcConfig.class, MembersDiaryRepositoryTest.TestTransactionConfig.class})
 class MembersDiaryRepositoryTest {
   
   @Autowired
@@ -32,7 +32,6 @@ class MembersDiaryRepositoryTest {
   @Test
   @DisplayName("登録済みデータの検索テスト")
   void readMembersDiaryTest() {
-    
     Optional<MembersDiary> optionalMemberDiary = repository.findById(1);
     assertThat(optionalMemberDiary.isPresent()).as("ID=1の情報が検索できる").isTrue();
     
