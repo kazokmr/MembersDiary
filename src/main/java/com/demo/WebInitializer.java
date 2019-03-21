@@ -15,8 +15,8 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
   /**
    * ContextLoaderListenerのセットアップ.
-   * `web.xml`だとListenerタグでContextLoaderListerクラスを定義し、Webアプリ用のBeanとしてSpring MVCに依存しないコンポーネントのConfigurationクラスをセットします.
-   * (主にService, Repository, DataSourceやドメインロジックなどSpring MVCから直接参照しないクラスが対象.)
+   * `web.xml`だとListenerタグでContextLoaderListerクラスを定義し、Webアプリ用のコンポーネントのConfigurationクラスをセットします.
+   * (主にService, Repository, DataSourceやドメインロジックなどSpring MVCから直接参照しないBeanが対象.)
    *
    * @return Configuration Classes for Web Application.
    */
@@ -59,19 +59,14 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
    * Servlet Filterの登録
    * `web.xml`だとfilterタグに相当し、フィルタークラスを指定します.
    * 今回は日本語の文字化け対応としてCharacterEncodingFilterを追加し、文字エンコードをUTF-8にします.
-   * (filter-mappingはonStartUpメソッドをオーバーライドして定義する必要があるがCharacterEncodeingFilterは全てのリクエストを対象にするので指定しない)
+   * (filter-mappingはonStartUpメソッドをオーバーライドして定義する必要があるがCharacterEncodingFilterは全てのリクエストを対象にするので指定しない)
    *
    * @return Servlet Filters
    */
   @Override
   protected Filter[] getServletFilters() {
-    
-    CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
-    characterEncodingFilter.setEncoding(StandardCharsets.UTF_8.name());
-    characterEncodingFilter.setForceEncoding(true);
-    
     return new Filter[]{
-        characterEncodingFilter
+        new CharacterEncodingFilter(StandardCharsets.UTF_8.name(), true)
     };
   }
 }
