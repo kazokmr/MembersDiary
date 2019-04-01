@@ -15,7 +15,8 @@
         <java.version>11</java.version>
         <sonar.java.spotbugs.reportPaths>./target/spotbugsXml.xml</sonar.java.spotbugs.reportPaths>
         <sonar.java.pmd.reportPaths>./target/pmd.xml</sonar.java.pmd.reportPaths>
-        <sonar.java.checkstyle.reportPaths>./target/checkstyle-result.xmlj
+        <sonar.java.checkstyle.reportPaths>
+            ./target/checkstyle-result.xml
         </sonar.java.checkstyle.reportPaths>
     </properties>
 
