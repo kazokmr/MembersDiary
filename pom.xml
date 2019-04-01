@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>5.1.6.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-java8time</artifactId>
-            <version>3.0.3.RELEASE</version>
+            <version>3.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -65,25 +65,25 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.4.0</version>
+            <version>5.4.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.4.0</version>
+            <version>5.4.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.1.5.RELEASE</version>
+            <version>5.1.6.RELEASE</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -201,7 +201,7 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>8.18</version>
+                        <version>8.19</version>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -257,12 +257,12 @@
                     <dependency>
                         <groupId>net.sourceforge.pmd</groupId>
                         <artifactId>pmd-core</artifactId>
-                        <version>6.12.0</version>
+                        <version>6.13.0</version>
                     </dependency>
                     <dependency>
                         <groupId>net.sourceforge.pmd</groupId>
                         <artifactId>pmd-java</artifactId>
-                        <version>6.12.0</version>
+                        <version>6.13.0</version>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -297,28 +297,6 @@
                     </execution>
                 </executions>
             </plugin>
-           <!-- <plugin>
-                <groupId>org.openclover</groupId>
-                <artifactId>clover-maven-plugin</artifactId>
-                <version>4.3.1</version>
-                <configuration>
-                    <targetPercentage>50%</targetPercentage>
-                    <failOnViolation>true</failOnViolation>
-                    <generateHtml>true</generateHtml>
-                    <generateXml>true</generateXml>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>check</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>instrument-test</goal>
-                            <goal>check</goal>
-                            <goal>clover</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -404,7 +382,7 @@
                     <targetJdk>${java.version}</targetJdk>
                     <skipEmptyReport>false</skipEmptyReport>
                     <printFailingErrors>true</printFailingErrors>
-                    <!-- Dont use cache here, the lifesycle for `site` goal wont support it-->
+                    <!-- Dont use cache here, the lifecycle for `site` goal wont support it-->
                     <analysisCache>false</analysisCache>
                 </configuration>
                 <reportSets>
@@ -415,23 +393,6 @@
                     </reportSet>
                 </reportSets>
             </plugin>
-           <!-- <plugin>
-                <groupId>org.openclover</groupId>
-                <artifactId>clover-maven-plugin</artifactId>
-                <version>4.3.1</version>
-                <configuration>
-                    <targetPercentage>50%</targetPercentage>
-                    <generateHtml>true</generateHtml>
-                    <generateXml>true</generateXml>
-                </configuration>
-                <reportSets>
-                    <reportSet>
-                        <reports>
-                            <report>clover</report>
-                        </reports>
-                    </reportSet>
-                </reportSets>
-            </plugin>-->
         </plugins>
     </reporting>
 </project>
